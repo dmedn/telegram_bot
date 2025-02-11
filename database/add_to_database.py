@@ -22,7 +22,7 @@ def add_user(message: Message) -> None:
             conn.commit()
 
         except sqlite3.IntegrityError:
-            logger.info(f'Пользователь с именем {message.from_user.username} уже существует')
+            logger.error(f'Пользователь с именем {message.from_user.username} уже существует')
             conn.close()
 
 
@@ -48,7 +48,7 @@ def add_query(query: dict) -> None:
                 """)
             conn.commit()
         except sqlite3.IntegrityError:
-            logger.info(f'Запрос с такой датой и временем уже существует. Пользователь {user_id}')
+            logger.error(f'Запрос с такой датой и временем уже существует. Пользователь {user_id}')
             conn.close()
 
 

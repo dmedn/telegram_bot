@@ -1,5 +1,6 @@
 import os
 from dotenv import find_dotenv, load_dotenv
+from loguru import logger
 
 
 class BaseSettings:
@@ -18,8 +19,9 @@ class BaseSettings:
 
 
 if not find_dotenv():
+    logger.error('Отсутствует файл .env. Переменные окружения не загружены')
     exit('Переменные окружения не загружены - отсутствует файл .env')
 else:
     load_dotenv()
     settings = BaseSettings()
-
+    logger.info(f'Загружены переменные окружения. Создан объект: {settings.__name__}')

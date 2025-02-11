@@ -17,7 +17,7 @@ def read_query(user_id: int) -> list:
             conn.close()
             return queries
         except sqlite3.OperationalError:
-            logger.info(f'В базе данных отсутствуют запросы от пользователя {user_id}')
+            logger.error(f'В базе данных отсутствуют запросы от пользователя {user_id}')
             conn.close()
             return []
 
@@ -43,5 +43,5 @@ def get_history_response(message) -> dict:
             connect.close()
             return history
         except sqlite3.OperationalError:
-            logger.info(f'В базе данных отсутствует данные запроса. User_id: {message.chat.id}')
+            logger.error(f'В базе данных отсутствует данные запроса. User_id: {message.chat.id}')
             conn.close()
