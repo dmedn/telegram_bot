@@ -126,7 +126,7 @@ class Calendar:
     def __init__(self, language: Language = RUSSIAN_LANGUAGE):
         self.__lang = language
 
-    def create_calendar(self, name: str = 'calendar_1', year: int = None, month: int = None) -> InlineKeyboardMarkup:
+    def create_calendar(self, name: str = 'calendar_1', year: int = None, month: int = None, day: int = None) -> InlineKeyboardMarkup:
         """Возвращает inline клавиатуру с календарем"""
 
         now_day = datetime.datetime.now()

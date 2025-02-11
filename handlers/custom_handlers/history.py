@@ -25,6 +25,7 @@ def get_query_handler(message: Message) -> None:
 @bot.message_handler(state=UserInputState.select_number)
 def number_query_handler(message: Message) -> None:
     """Перехват и валидация введенного пользователем номера запроса."""
+
     logger.info(f'Запуск обработчика {number_query_handler.__name__}')
 
     if message.text.isdigit():

@@ -6,7 +6,10 @@ from states.user_states import UserInputState
 
 @bot.callback_query_handler(func=lambda call: call.data.isdigit())
 def destination_id_callback_handler(call: CallbackQuery) -> None:
-    logger.info(f'Пользователь {call.message.chat.id} выбрал город')
+    """Перехват введенного пользователем города"""
+
+    logger.info(f'Запуск обработчика {destination_id_callback_handler.__name__}')
+
     if call.data:
         bot.set_state(call.message.chat.id, UserInputState.destination_id)
         with bot.retrieve_data(call.message.chat.id) as data:
